@@ -1,35 +1,44 @@
 
-/* const apiUrl = 'https://fakestoreapi.com/products'; */
+/* https://jsonplaceholder.typicode.com/photos */
 
-/* fetch(apiUrl)
-  .then((res)=>res.json())
-  .then(data=>console.log(data))
-  .catch(err=>console.log('error', err)); */
+const apiUrl = 'https://fakestoreapi.com/products';
 
 async function fetchApi(apiUrl){
   try{
     let res = await fetch(apiUrl);
     let data= await res.json();
     console.log(data);
+    cardsRender(data)
   }catch(err){
     console.log('error', err);
   }
 }  
 
+fetchApi(apiUrl);
 
-async function cardRender() {
-  
-  const data = await fetchApi('https://fakestoreapi.com/products');
+const container = document.querySelector('.cards-container')
 
+function cardsRender(data){
   data.forEach(item=>{
-    const container = document.querySelector('.cards-container');
-    container.innerHTML = 
-    `
-      <img src=${item.image} alt="image">
-      <h1>${item.title}</h1>
-      <h2>${item.price}</h2>
-    `
+    const div = document.createElement('div');
+    const image = document.createElement('img');
+    const h1 = document.createElement('h1');
+    const h3 = document.createElement('h3');
+
+    div.classList.add('card-box');
+    image.classList.add('card-img');
+
+    image.src= item.image;
+    h1.textContent = item.title; 
+    h3.textContent = item.price;
+
+    div.appendChild(image);
+    div.appendChild(h1);
+    div.appendChild(h3);
+    container.appendChild(div);
+
   })
 }
 
-cardRender();
+
+
