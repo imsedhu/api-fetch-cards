@@ -30,7 +30,7 @@ function cardsRender(data){
 
     image.src= item.image;
     h1.textContent = item.title; 
-    h3.textContent = item.price;
+    h3.innerText = `price: ${item.price}`
 
     div.appendChild(image);
     div.appendChild(h1);
