@@ -16,9 +16,10 @@ async function fetchApi(apiUrl){
 
 fetchApi(apiUrl);
 
-const container = document.querySelector('.cards-container')
+
 
 function cardsRender(data){
+  const container = document.querySelector('.cards-container')
   data.forEach(item=>{
     const div = document.createElement('div');
     const image = document.createElement('img');
